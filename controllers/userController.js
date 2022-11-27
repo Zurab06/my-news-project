@@ -27,12 +27,12 @@ module.exports.UserController = {
       }
       const hashPassword = bcrypt.hashSync(password, 6);
       const userRole = await Role.findOne({ value: "USER" });
-      console.log(userRole)
       const user = new User({
         login,
         password: hashPassword,
         roles: [userRole.value],
       });
+      console.log(userRole)
       await user.save();
       return res.json({ message: "success registration" });
     } catch (e) {

@@ -6,7 +6,7 @@ const roleMiddleware = require('../middlewares/rolemiddleware')
 
 router.post('/signUp/', 
 [check('login','login empty').notEmpty(),
-check('password','short password').isLength({max:10,min:4})],
+check('password','short password').isLength({max:10,min:2})],
 UserController.signUp)
 router.post('/signIn', UserController.signIn)
 router.get('/users/',roleMiddleware(['ADMIN']), UserController.getUsers)
